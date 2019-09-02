@@ -1,4 +1,12 @@
-# AmpFrontEndTestTs
+# amp-front-end-test-ts
+
+[Instructions](task-details/instructions.md)
+
+[Design Details](task-details/desing-details.md)
+
+
+
+# Angular README
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
