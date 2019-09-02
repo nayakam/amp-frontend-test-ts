@@ -42,13 +42,18 @@ export class ShoppingComponent implements OnInit {
     );
     this.currentCartItem$.subscribe(cartItem => {
       if (cartItem) {
-        let updateItem: CardItem = cartItem;
-        const existingItem: CardItem = this.cardItems.find(item => item.product.id == cartItem.product.id);
-        if (existingItem) {
-          updateItem = {product: existingItem.product, quantity: cartItem.quantity + existingItem.quantity};
+        if (cartItem.removeFlag) {
+          // Quick hack to remove item from the list
           this.cardItems = this.cardItems.filter(item => item.product.id !== cartItem.product.id);
+        } else {
+          let updateItem: CardItem = cartItem;
+          const existingItem: CardItem = this.cardItems.find(item => item.product.id == cartItem.product.id);
+          if (existingItem) {
+            updateItem = {product: existingItem.product, quantity: cartItem.quantity + existingItem.quantity};
+            this.cardItems = this.cardItems.filter(item => item.product.id !== cartItem.product.id);
+          }
+          this.cardItems.push(updateItem);
         }
-        this.cardItems.push(updateItem);
       }
     });
   }
@@ -58,6 +63,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   cardItemRemoved(cardItem: CardItem) {
-    // TODO
+    cardItem.removeFlag = true;
+    this.cardItems$.next(cardItem);
   }
 }

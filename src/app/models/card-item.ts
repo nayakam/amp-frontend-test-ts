@@ -5,4 +5,6 @@ export interface CardItem {
   product: Product;
   quantity: number;
   // total: number;
+  // Add / Remove item -- Damn , Just a quick hack !!!
+  removeFlag?: boolean;
 }

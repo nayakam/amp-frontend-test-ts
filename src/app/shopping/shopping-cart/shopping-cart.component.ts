@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CardItem} from '../../models/card-item';
-import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -32,6 +31,8 @@ export class ShoppingCartComponent implements OnInit {
 
   onRemoveClick(productId: number) {
     // TODO: Should be emitted
+    const tempCartItem: CardItem = this.cardItems.find(item => item.product.id == productId);
+    this.removeCartEventEmitter.emit(tempCartItem);
     this.cardItems = this.cardItems.filter(item => item.product.id !== productId);
   }
 }
