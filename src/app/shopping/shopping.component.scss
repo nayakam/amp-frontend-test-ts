@@ -1,0 +1,38 @@
+.main-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.product-catalog {
+  width: 45%;
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.shopping-cart {
+  min-width: 200px;
+  flex-grow: 1;
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .mobile-container {
+    flex-direction: column-reverse;
+  }
+  .product-catalog, .shopping-cart {
+    width: 90%;
+    float: left;
+    display: block;
+    padding: 10px;
+    margin: 10px;
+  }
+}
