@@ -1,1 +1,35 @@
-<p>product-catalog works!</p>
+<ng-container>
+  <div class="component-header">
+    <div>Add Product</div>
+  </div>
+
+  <table>
+    <tr>
+      <td> Name :</td>
+      <td>
+        <select [(ngModel)]="selectedProductId" (change)="onProductSelectionChange($event.target.value)">
+          <option *ngFor="let product of ( productCatalog)"
+                  [value]="product.id"> {{product.name}} </option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Quantity :</td>
+      <td><input type="number" min="0" max="100" [(ngModel)]="productQuantity" (change)="onQuantitySelectionChange()"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Price :</td>
+      <td>{{this.selectedProductPrice | currency: '$'}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="button" [disabled]="!isAddValid" (click)="updateShoppingCart()">Add</button>
+        <button type="button" (click)="clearSelection()">Cancel</button>
+      </td>
+    </tr>
+  </table>
+</ng-container>

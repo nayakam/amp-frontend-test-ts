@@ -1,6 +1,7 @@
 <div class="main-container mobile-container">
   <div class="product-catalog">
-    <app-product-catalog></app-product-catalog>
+    <app-product-catalog [productCatalog]="productCatalog"
+                         (addedToCartEventEmitter)="productSelected($event)"></app-product-catalog>
   </div>
   <div class="shopping-cart">
     <app-shopping-cart></app-shopping-cart>

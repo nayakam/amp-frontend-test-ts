@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ProductCatalogComponent} from './product-catalog/product-catalog.component';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {ShoppingComponent} from './shopping.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {ShoppingComponent} from './shopping.component';
     ShoppingComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class ShoppingModule {

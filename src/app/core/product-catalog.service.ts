@@ -1,9 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {Observable, of} from 'rxjs';
-import {delay} from 'rxjs/operators';
-
-const FETCH_LATENCY = 500;
 
 const PRODUCT_CATALOG: Product[] = [
   {id: 1, name: 'Bread', price: 4.90},
@@ -24,12 +21,12 @@ export class ProductCatalogService {
   }
 
   getProductCatalog(): Observable<Product[]> {
-    return of(PRODUCT_CATALOG).pipe(delay(FETCH_LATENCY));
+    return of(PRODUCT_CATALOG);
   }
 
   getProductCatalogById(id: number): Observable<Product> {
     // TODO : Validate input parameter
     const product: Product = PRODUCT_CATALOG.find(p => p.id === id);
-    return of(product).pipe(delay(FETCH_LATENCY));
+    return of(product);
   }
 }
