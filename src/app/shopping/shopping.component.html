@@ -4,6 +4,7 @@
                          (addedToCartEventEmitter)="productSelected($event)"></app-product-catalog>
   </div>
   <div class="shopping-cart">
-    <app-shopping-cart></app-shopping-cart>
+    <app-shopping-cart [cardItems]="cardItems"
+                       (removeCartEventEmitter)="cardItemRemoved($event)"></app-shopping-cart>
   </div>
 </div>

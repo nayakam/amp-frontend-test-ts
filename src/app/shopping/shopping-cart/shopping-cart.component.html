@@ -1,1 +1,39 @@
-<p>shopping-cart works!</p>
+<ng-container>
+  <div>
+    <div class="component-header">
+      <div>Shopping Cart</div>
+    </div>
+
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let item of cardItems">
+          <tr>
+            <td>{{item.product.name}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.product.price * item.quantity | currency:'$'}}</td>
+            <td>
+              <button type="button" (click)="onRemoveClick(item.product.id)">X</button>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="total-wrapper">
+      <div class="total-left"></div>
+      <div class="total-right">
+        <h4>Total: {{getTotalValue() | currency:'$'}}</h4>
+      </div>
+    </div>
+  </div>
+</ng-container>
+

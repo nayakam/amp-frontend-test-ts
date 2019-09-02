@@ -29,7 +29,7 @@ export class ProductCatalogComponent implements OnInit {
 
   onProductSelectionChange(selectedProductId: number) {
     this.selectedProductId = selectedProductId;
-    const product: Product = this.productCatalog.find(p => p.id == selectedProductId);
+    const product: Product = this.productCatalog.find(p => p.id == this.selectedProductId);
     this.selectedProductPrice = product.price;
     this.productQuantity = 0;
     this.isAddValid = false;
