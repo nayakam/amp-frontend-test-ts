@@ -4,7 +4,14 @@
 
 [Design Details](task-details/desing-details.md)
 
+[Demo master](https://stackblitz.com/github/nayakam/amp-front-end-test-ts)
 
+[Demo share_data_through_parent branch](https://stackblitz.com/github/nayakam/amp-front-end-test-ts/tree/share_data_through_parent)
+
+## TODO
+*   Refactor
+*   Use onPush strategy
+*   Use ngrx/store
 
 # Angular README
 
