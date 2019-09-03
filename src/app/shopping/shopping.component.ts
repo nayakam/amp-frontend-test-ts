@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductCatalogService} from '../core/product-catalog.service';
 import {Product} from '../models/product';
 import {CardItem} from '../models/card-item';
-import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-shopping',
@@ -14,12 +13,7 @@ export class ShoppingComponent implements OnInit {
   productCatalog: Product[] = [];
   cardItems: CardItem[] = [];
 
-  // TODO : Should be moved to service / Store
-  private cardItems$ = new BehaviorSubject<CardItem>(null);
-  currentCartItem$ = this.cardItems$.asObservable();
-
   constructor(private productCatalogService: ProductCatalogService) {
-
   }
 
   ngOnInit() {
@@ -40,24 +34,25 @@ export class ShoppingComponent implements OnInit {
         ;
       }, err => console.log(err)
     );
-    this.currentCartItem$.subscribe(cartItem => {
-      if (cartItem) {
-        let updateItem: CardItem = cartItem;
-        const existingItem: CardItem = this.cardItems.find(item => item.product.id == cartItem.product.id);
-        if (existingItem) {
-          updateItem = {product: existingItem.product, quantity: cartItem.quantity + existingItem.quantity};
-          this.cardItems = this.cardItems.filter(item => item.product.id !== cartItem.product.id);
-        }
-        this.cardItems.push(updateItem);
-      }
-    });
   }
 
   productSelected(cardItem: CardItem) {
-    this.cardItems$.next(cardItem);
+    this.addCardItem(cardItem);
   }
 
   cardItemRemoved(cardItem: CardItem) {
-    // TODO
+    this.cardItems = this.cardItems.filter(item => item.product.id !== cardItem.product.id);
+  }
+
+  private addCardItem(cardItem: CardItem) {
+    if (cardItem) {
+      let updateItem: CardItem = cardItem;
+      const existingItem: CardItem = this.cardItems.find(item => item.product.id == cardItem.product.id);
+      if (existingItem) {
+        updateItem = {product: existingItem.product, quantity: cardItem.quantity + existingItem.quantity};
+        this.cardItems = this.cardItems.filter(item => item.product.id !== cardItem.product.id);
+      }
+      this.cardItems.push(updateItem);
+    }
   }
 }
