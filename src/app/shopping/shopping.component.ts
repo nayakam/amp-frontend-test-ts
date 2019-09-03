@@ -40,6 +40,14 @@ export class ShoppingComponent implements OnInit {
         ;
       }, err => console.log(err)
     );
+
+    this.updateShoppingCard();
+  }
+
+  /**
+   * TODO : Move these logic to service / Store
+   */
+  private updateShoppingCard() {
     this.currentCartItem$.subscribe(cartItem => {
       if (cartItem) {
         if (cartItem.removeFlag) {
@@ -63,6 +71,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   cardItemRemoved(cardItem: CardItem) {
+    // TODO: Should go to store through service
     cardItem.removeFlag = true;
     this.cardItems$.next(cardItem);
   }

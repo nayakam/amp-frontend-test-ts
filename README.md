@@ -4,7 +4,20 @@
 
 [Design Details](task-details/desing-details.md)
 
+[Demo master](https://stackblitz.com/github/nayakam/amp-front-end-test-ts)
 
+[Demo share_data_through_parent branch](https://stackblitz.com/github/nayakam/amp-front-end-test-ts/tree/share_data_through_parent)
+
+## TODO - Checklist
+*   [ ] Refactor / Clean up codebase
+*   [ ] Check css usage
+*   [ ] Review and add unit test
+*   [ ] Review design doc and update 
+*   [ ] Check angular directive usage / performance improvements
+*   [ ] Add additional features - Sorting / Filters
+*   [ ] Use UI Component library - Angular Material
+*   [ ] Use onPush strategy
+*   [ ] Use ngrx/store
 
 # Angular README
 

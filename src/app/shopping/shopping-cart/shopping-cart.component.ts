@@ -30,9 +30,8 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   onRemoveClick(productId: number) {
-    // TODO: Should be emitted
     const tempCartItem: CardItem = this.cardItems.find(item => item.product.id == productId);
+    // TODO : Check can be emitted with product id.
     this.removeCartEventEmitter.emit(tempCartItem);
-    this.cardItems = this.cardItems.filter(item => item.product.id !== productId);
   }
 }
