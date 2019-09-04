@@ -21,7 +21,8 @@
             <td>{{item.quantity}}</td>
             <td>{{item.product.price * item.quantity | currency:'$'}}</td>
             <td>
-              <button type="button" (click)="onRemoveClick(item.product.id)">X</button>
+              <button id="product-id-{{item.product.id}}" type="button" (click)="onRemoveClick(item.product.id)">X
+              </button>
             </td>
           </tr>
         </ng-container>
