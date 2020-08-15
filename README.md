@@ -1,4 +1,4 @@
-# amp-front-end-test-ts
+# angular-front-end-test-ts
 
 [Instructions](task-details/instructions.md)
 
